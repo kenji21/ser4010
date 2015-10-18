@@ -214,9 +214,9 @@ int send_somfy_command(struct serco *dev, uint8_t key, uint32_t addr, uint16_t s
 	}
 	frame[2] = (seq & 0xFF00) >> 8;
 	frame[3] = seq & 0xFF;
-	frame[4] = addr & 0xFF;
+	frame[6] = addr & 0xFF;
 	frame[5] = (addr & 0xFF00) >> 8;
-	frame[6] = (addr & 0xFF0000) >> 16;
+	frame[4] = (addr & 0xFF0000) >> 16;
 
 	// calculate checksum
 	frame[1] |= somfy_calc_checksum(frame);
